@@ -25,8 +25,7 @@ const Home = ({navigation}) => {
     }
 
     return (
-        <SafeAreaView >
-            <ScrollView>
+        <SafeAreaView color={'green'} >
                 <View style={styles.row}>
                     <FontAwesome name="bars" size={24} color="white" />
                     <FontAwesome name="user-alt" size={24} color="white" />
@@ -34,7 +33,7 @@ const Home = ({navigation}) => {
                 <View style={styles.centerView}>
 
                    <View style={styles.marginV}>
-                        <Text style={styles.textTitle}>Hiling.id</Text>
+                        <Text style={styles.textTitle}>Please Healing Me</Text>
                    </View>
                    <View style={styles.boxmain}>
                        <View style={styles.margins}>
@@ -68,7 +67,6 @@ const Home = ({navigation}) => {
                 <View style={styles.copyright}>
                     <Text>Apri Kurniawansyah 119140141</Text>
                 </View>
-            </ScrollView>
         </SafeAreaView>
     );
 };

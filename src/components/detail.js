@@ -13,25 +13,23 @@ import { useRoute } from '@react-navigation/native';
 import { MASKAPAI, BANDARA, JADWAL } from '../utils/Data'
 
 
-const detail = ({navigation}) => {
+const Detail = ({navigation}) => {
     const route = useRoute();
  
     return (
         <SafeAreaView >
-            <ScrollView >
                 <View style={styles.row}>
                     <Icon name ='arrow-back' size={50} onPress={() => navigation.goBack()}/>
                     <Icon name ='account-circle'size={50}/>
                 </View>
                 <View style={styles.upper}>
-                    <Text style={styles.textTitle}>Hiling.id</Text>
+                    <Text style={styles.textTitle}>Please Healing Me</Text>
                     <Text style={styles.textSubtittle}>Hasil Pencarian Penerbangan</Text>
                     <Text style={styles.textSubtittle}>(Tanggal Keberangkatan)</Text>
                 </View> 
                 <View style={styles.marginMain}>                  
                     <FindData/>
                 </View>              
-            </ScrollView>
         </SafeAreaView>
     );
 
@@ -47,8 +45,6 @@ const detail = ({navigation}) => {
 
     function DataGet (hasil){
         return (
-            
-            
             <FlatList
                 data = {hasil}
                 renderItem={({item}) => (
@@ -73,11 +69,13 @@ const detail = ({navigation}) => {
     };
 
     function FindData(){
-        if (route.params.keberangkatan === '' || route.params.tujuan === '' || route.params.waktu === ''){
+        if (!route.params.keberangkatan || !route.params.tujuan|| !route.params.waktu)
+            return NoHaveData()
+        if (route.params.keberangkatan.trim() === '' || route.params.tujuan.trim() === '' || route.params.waktu.trim() === ''){
             return NoHaveData();
         }else{
-            const keberangkatanID = BANDARA.find(id => id.bandara_nama.toLowerCase() === route.params.keberangkatan.toLowerCase()).bandara_id;
-            const tujuanID = BANDARA.find(id => id.bandara_nama.toLowerCase() === route.params.tujuan.toLowerCase()).bandara_id;
+            const keberangkatanID = BANDARA.find(id => id.bandara_nama.toLowerCase() === route.params.keberangkatan.toLowerCase())?.bandara_id;
+            const tujuanID = BANDARA.find(id => id.bandara_nama.toLowerCase() === route.params.tujuan.toLowerCase())?.bandara_id;
             const hasil = JADWAL.filter(id => id.bandara_id_keberangkatan.toLowerCase() === keberangkatanID.toLowerCase() && id.bandara_id_kedatangan.toLowerCase() === tujuanID.toLowerCase() && id.tanggal === route.params.waktu.toLowerCase());
 
             let findAll = (hasil.length >= 1) ? DataGet(hasil) : NoHaveData() ;
@@ -87,4 +85,4 @@ const detail = ({navigation}) => {
     }
 }
 
-export default detail;
+export default Detail;

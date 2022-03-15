@@ -9,7 +9,7 @@ const styles = StyleSheet.create({
         justifyContent:'center',
         width: '100%', 
         height: 550,
-        backgroundColor: 'powderblue',
+        backgroundColor: 'green',
         borderBottomLeftRadius: 30,
         borderBottomEndRadius: 30,
     },
@@ -37,7 +37,7 @@ const styles = StyleSheet.create({
     row:{
         flexDirection: "row",
         justifyContent: 'space-between',
-        backgroundColor: 'powderblue'
+        backgroundColor: 'green'
     },
     marginV :{
         marginVertical: 30,

@@ -4,13 +4,12 @@ const styles = StyleSheet.create({
     row:{
         flexDirection: "row",
         justifyContent: 'space-between',
-        backgroundColor: 'powderblue',
+        backgroundColor: 'green',
         
     },
     upper:{
         alignItems:'center',
-        //justifyContent:'center',
-        backgroundColor: 'powderblue',
+        backgroundColor: 'green',
         height: 150,
     },
     marginMain:{
